@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prettier": "pnpm exec prettier . --check",
+    "prettier:fix": "pnpm exec prettier . --write",
+    "build": "pnpm -r --if-present build"
   },
   "keywords": [],
   "author": "",
@@ -12,16 +16,16 @@
   "engines": {
     "node": ">=20.11.1"
   },
-  "packageManager": "pnpm@10.12.4",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.41.0",
-    "@typescript-eslint/parser": "^8.41.0",
-    "eslint": "^9.34.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
-    "xo": "^1.2.2"
+    "xo": "^1.2.1"
   },
   "dependencies": {
-    "typescript": "^5.9.2"
-  }
+    "typescript": "5.8.2"
+  },
+  "packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631"
 }
