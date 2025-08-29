@@ -1,0 +1,12 @@
+{
+  "singleQuote": true,
+  "bracketSpacing": false,
+  "overrides": [
+    {
+      "files": "*.yaml",
+      "options": {
+        "singleQuote": true
+      }
+    }
+  ]
+}
