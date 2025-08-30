@@ -27,15 +27,18 @@ importers:
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
+      sequelize-cli:
+        specifier: ^6.6.3
+        version: 6.6.3
       xo:
         specifier: ^1.2.1
         version: 1.2.2(@types/eslint@8.56.12)(@typescript-eslint/utils@8.41.0(eslint@8.57.1)(typescript@5.8.2))(typescript@5.8.2)
 
   backend:
     dependencies:
-      app-constants:
-        specifier: workspace:^
-        version: link:../packages/app-constants
+      dotenv:
+        specifier: ^17.2.1
+        version: 17.2.1
       pg:
         specifier: ^8.16.0
         version: 8.16.3
@@ -45,6 +48,9 @@ importers:
       sequelize-typescript:
         specifier: ^2.1.6
         version: 2.1.6(@types/node@22.18.0)(@types/validator@13.15.2)(reflect-metadata@0.2.2)(sequelize@6.37.7(pg@8.16.3))
+      zod:
+        specifier: ^4.1.5
+        version: 4.1.5
     devDependencies:
       '@types/node':
         specifier: ^22.15.29
@@ -727,6 +733,10 @@ packages:
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
     engines: {node: '>=6.0.0'}
+
+  dotenv@17.2.1:
+    resolution: {integrity: sha512-kQhDYKZecqnM0fCnzI5eIv5L4cAe/iRI+HqMbO/hbRdTAeXDG+M9FjipUxNfbARuEg4iHIbhnhs78BCHNbSxEQ==}
+    engines: {node: '>=12'}
 
   dottie@2.0.6:
     resolution: {integrity: sha512-iGCHkfUc5kFekGiqhe8B/mdaurD+lakO9txNnTvKtA6PISrw86LgqHvRzWYPyoE2Ph5aMIrCw9/uko6XHTKCwA==}
@@ -2284,6 +2294,9 @@ packages:
     resolution: {integrity: sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==}
     engines: {node: '>=18'}
 
+  zod@4.1.5:
+    resolution: {integrity: sha512-rcUUZqlLJgBC33IT3PNMgsCq6TzLQEG/Ei/KTCU0PedSWRMAXoOUN+4t/0H+Q8bdnLPdqUYnvboJT0bn/229qg==}
+
 snapshots:
 
   '@babel/code-frame@7.27.1':
@@ -3023,6 +3036,8 @@ snapshots:
   doctrine@3.0.0:
     dependencies:
       esutils: 2.0.3
+
+  dotenv@17.2.1: {}
 
   dottie@2.0.6: {}
 
@@ -4841,3 +4856,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors@2.1.2: {}
+
+  zod@4.1.5: {}

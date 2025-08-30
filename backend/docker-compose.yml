@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'postgres']
+      interval: 10s
+      retries: 20
+      start_period: 30s
+      timeout: 10s
+    shm_size: 4g
+    ports:
+      - '5432:5432'
+    command: postgres -c shared_buffers=2GB
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+  pgadmin:
+    image: dpage/pgadmin4:7.7
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:5050/ || exit 1']
+      interval: 10s
+      retries: 20
+      start_period: 30s
+      timeout: 10s
+    ports:
+      - '5050:80'
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
