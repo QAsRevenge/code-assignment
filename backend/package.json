@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "pnpm exec tsc",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "db:seed": "env-cmd ts-node scripts/seedScript.ts"
   },
   "dependencies": {
     "dotenv": "^17.2.1",
@@ -16,7 +17,9 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.29",
+    "env-cmd": "^11.0.0",
     "sequelize-cli": "^6.6.3",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }
 }

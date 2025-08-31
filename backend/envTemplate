@@ -1,6 +1,6 @@
-POSTGRES_USER='username'
-POSTGRES_PASSWORD='password'
-POSTGRES_DB='db_name'
+POSTGRES_USER='postgres'
+POSTGRES_PASSWORD='mockPassword'
+POSTGRES_DB='postgres'
 POSTGRES_PORT='5432'
 POSTGRES_HOST='localhost'
 
