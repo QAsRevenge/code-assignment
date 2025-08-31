@@ -1,0 +1,29 @@
+{
+  "name": "app-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "db:init": "pnpm clean && pnpm build && pnpm exec node dist/initialize.js",
+    "db:migrate": "pnpm clean && pnpm build && pnpm exec node dist/migrate-cli.js",
+    "db:migrate:all-up": "pnpm db:migrate up",
+    "db:migrate:all-down": "pnpm db:migrate down --to 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app-constants": "workspace:^",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "dotenv": "^16.4.7",
+    "typescript": "^5.5.4",
+    "umzug": "^3.8.2",
+    "zod": "^3.24.2"
+  }
+}
