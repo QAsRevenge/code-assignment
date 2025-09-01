@@ -5,16 +5,13 @@ import {ProductDetailSchema} from '../schemas/responses/ProductDetailSchema';
 import {ProductListSchemaArray} from '../schemas/responses/ProductListSchema';
 import {ProductList} from '../types/responses/ProductList';
 import {ProductDetail} from '../types/responses/ProductDetail';
-import {Product} from '../types/validation/Product';
 
 export async function createProduct(req: Request) {
   const safeParsedResult = ProductSchema.safeParse(req.body);
   if (!safeParsedResult.success) {
     return {status: 400, body: {error: safeParsedResult.error}};
   }
-  const product: Product = await productService.createProduct(
-    safeParsedResult.data,
-  );
+  const product = await productService.createProduct(safeParsedResult.data);
   return {status: 201, body: product};
 }
 
