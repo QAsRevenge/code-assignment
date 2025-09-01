@@ -1,18 +1,38 @@
-import {Request, Response} from 'express';
+import {Request} from 'express';
 import {productService} from '../services/productService';
-import {productSchema} from '../schemas/productSchema';
+import {ProductSchema} from '../schemas/validation/ProductSchema';
+import {ProductDetailSchema} from '../schemas/responses/ProductDetailSchema';
+import {ProductListSchemaArray} from '../schemas/responses/ProductListSchema';
+import {ProductList} from '../types/responses/ProductList';
+import {ProductDetail} from '../types/responses/ProductDetail';
+import {Product} from '../types/validation/Product';
 
-export async function createProduct(req: Request, res: Response) {
-  const parsedResult = productSchema.safeParse(req.body);
-  if (!parsedResult.success) {
-    return res.status(400).json({error: parsedResult.error});
+export async function createProduct(req: Request) {
+  const safeParsedResult = ProductSchema.safeParse(req.body);
+  if (!safeParsedResult.success) {
+    return {status: 400, body: {error: safeParsedResult.error}};
   }
-  console.log(parsedResult.data);
-  try {
-    const product = await productService.createProduct(parsedResult.data);
-    res.status(201).json(product);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({error: 'Failed to create product'});
+  const product: Product = await productService.createProduct(
+    safeParsedResult.data,
+  );
+  return {status: 201, body: product};
+}
+
+export async function listProducts() {
+  const products = await productService.listProducts();
+  const formattedResult: ProductList[] = ProductListSchemaArray.parse(products);
+  return {status: 200, body: formattedResult};
+}
+
+export async function getProductById(req: Request) {
+  const id = Number(req.params.id);
+  if (isNaN(id)) {
+    return {status: 400, body: {error: 'Invalid product id'}};
   }
+  const product = await productService.getProductById(id);
+  if (!product) {
+    return {status: 404, body: {error: 'Product not found'}};
+  }
+  const formattedResult: ProductDetail = ProductDetailSchema.parse(product);
+  return {status: 200, body: formattedResult};
 }
