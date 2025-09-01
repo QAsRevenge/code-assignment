@@ -7,7 +7,7 @@ const postgresEnvConfig = z
     POSTGRES_HOST: z.string().default('localhost'),
     POSTGRES_PORT: z.coerce.number().default(5432),
     POSTGRES_DB: z.string().default('postgres'),
-    POSTGRES_DB_USER: z.string().default('app_user'),
+    POSTGRES_DB_USER: z.string(),
     POSTGRES_DB_PASSWORD: z.string(),
   })
   .transform((o) => ({
