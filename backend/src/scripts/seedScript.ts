@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import {ProductType} from '../repo/appdb/_sequelize/models/ProductType';
 import {Colour} from '../repo/appdb/_sequelize/models/Colour';
-import {initSequelize} from '../_sequelize/initSequelize';
+import {initSequelize} from '../repo/appdb/_sequelize/initSequelize';
 
 async function seed() {
   const sequelize = initSequelize();
