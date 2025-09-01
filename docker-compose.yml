@@ -39,7 +39,7 @@ services:
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: 5432
-      POSTGRES_DB: app_db
+      POSTGRES_DB: postgres
       POSTGRES_DB_USER: postgres
       POSTGRES_DB_PASSWORD: password
     ports:
