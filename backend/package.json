@@ -6,16 +6,20 @@
   "scripts": {
     "build": "pnpm exec tsc",
     "lint": "eslint . --ext .ts",
-    "db:seed": "env-cmd ts-node scripts/seedScript.ts"
+    "db:seed": "env-cmd ts-node scripts/seedScript.ts",
+    "dev": "nodemon src/server.ts"
   },
   "dependencies": {
     "dotenv": "^17.2.1",
+    "express": "^5.1.0",
     "pg": "^8.16.0",
     "sequelize": "^6.37.7",
     "sequelize-typescript": "^2.1.6",
     "zod": "^4.1.5"
   },
   "devDependencies": {
+    "@types/express": "^5.0.3",
+    "nodemon": "^3.1.10",
     "@types/node": "^22.15.29",
     "env-cmd": "^11.0.0",
     "sequelize-cli": "^6.6.3",
