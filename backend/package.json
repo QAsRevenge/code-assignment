@@ -7,6 +7,8 @@
     "build": "pnpm exec tsc",
     "lint": "eslint . --ext .ts",
     "db:seed": "env-cmd ts-node scripts/seedScript.ts",
+    "db:init": "pnpm --filter app-db db:init",
+    "db:up": "pnpm db:init && pnpm --filter app-db db:migrate:all-up",
     "dev": "nodemon src/server.ts"
   },
   "dependencies": {

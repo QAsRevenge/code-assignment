@@ -9,6 +9,7 @@
     "db:init": "pnpm clean && pnpm build && pnpm exec node dist/initialize.js",
     "db:migrate": "pnpm clean && pnpm build && pnpm exec node dist/migrate-cli.js",
     "db:migrate:all-up": "pnpm db:migrate up",
+    "db:up": "pnpm db:init && pnpm db:migrate:all-up",
     "db:migrate:all-down": "pnpm db:migrate down --to 0"
   },
   "author": "",
