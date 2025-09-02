@@ -14,7 +14,6 @@ export function useFetchProducts() {
     async function fetchProducts() {
       try {
         const res = await fetch('http://localhost:3001/products');
-        console.log(res);
         if (!res.ok) throw new Error('Failed to fetch products');
         const data = await res.json();
         setProducts(data);
