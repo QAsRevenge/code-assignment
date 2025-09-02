@@ -36,3 +36,5 @@ async function seed() {
   await sequelize.close();
   console.log('Seeding complete!');
 }
+
+seed().catch(console.error);
