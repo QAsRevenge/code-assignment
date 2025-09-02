@@ -25,7 +25,8 @@ Internal
 
 Create the following endpoints:
 
-- Add a new product. The payload must contain: name, product type id, colour id. - Returns a list of products. The payload must contain: id, name of product.
+- Add a new product. The payload must contain: name, product type id, colour id. 
+- Returns a list of products. The payload must contain: id, name of product.
 - Returns details about a product by id. The payload must contain: id, name, product type, colours associated with that product.
 
 ## User interface
