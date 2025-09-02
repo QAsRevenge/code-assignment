@@ -46,4 +46,12 @@ export const productService = {
       attributes: {exclude: ['createdAt', 'updatedAt']},
     });
   },
+
+  async getProductTypes() {
+    return ProductType.findAll({attributes: ['id', 'productType']});
+  },
+
+  async getProductColours() {
+    return Colour.findAll({attributes: ['id', 'name']});
+  },
 };

@@ -33,3 +33,13 @@ export async function getProductById(req: Request) {
   const formattedResult: ProductDetail = ProductDetailSchema.parse(product);
   return {status: 200, body: formattedResult};
 }
+
+export async function getProductTypes() {
+  const productTypes = await productService.getProductTypes();
+  return {status: 200, body: productTypes};
+}
+
+export async function getProductColours() {
+  const colours = await productService.getProductColours();
+  return {status: 200, body: colours};
+}
