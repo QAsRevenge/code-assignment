@@ -15,13 +15,18 @@
 
 FROM node:20
 
-WORKDIR /app/backend
+WORKDIR /app
 
-COPY package.json /app/
-COPY pnpm-workspace.yaml /app/
-COPY pnpm-lock.yaml /app/
-COPY backend/package.json ./
-RUN npm install -g pnpm && pnpm install --filter ./backend...
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY tsconfig.base.json ./
+COPY backend/package.json ./backend/
+COPY backend/tsconfig.json ./backend/
+
+RUN npm install -g pnpm && pnpm install
+
+COPY backend ./backend
+
+WORKDIR /app/backend
 
 EXPOSE 3001
 

@@ -1,8 +1,10 @@
 import express from 'express';
 import {productRoutes} from './api/product/routes/productRoutes';
 import {initSequelize} from './repo/appdb/_sequelize/initSequelize';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
