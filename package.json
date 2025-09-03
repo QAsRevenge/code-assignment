@@ -23,6 +23,7 @@
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
     "sequelize-cli": "^6.6.3",
+    "vitest": "^3.2.4",
     "xo": "^1.2.1"
   },
   "dependencies": {

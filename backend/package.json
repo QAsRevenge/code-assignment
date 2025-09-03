@@ -6,6 +6,7 @@
   "scripts": {
     "build": "pnpm exec tsc",
     "lint": "eslint . --ext .ts",
+    "test": "vitest --passWithNoTests --config vitest.config.ts",
     "db:seed": "env-cmd ts-node src/scripts/seedScript.ts",
     "db:init": "pnpm --filter app-db db:init",
     "db:up": "pnpm db:init && pnpm --filter app-db db:migrate:all-up",

@@ -1,7 +1,7 @@
 import {Sequelize} from 'sequelize-typescript';
 import {SCHEMA_NAME} from './constants';
 import * as models from './models';
-import {parsePostgresEnv} from '../../../config/postgres';
+import {parsePostgresEnv} from '../config/postgres';
 
 const DEFAULT_SCHEMA = SCHEMA_NAME.DATA;
 

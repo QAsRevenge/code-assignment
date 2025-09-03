@@ -1,19 +1,45 @@
 import {Router, IRouter} from 'express';
-import {
-  createProduct,
-  getProductById,
-  listProducts,
-  getProductTypes,
-  getProductColours,
-} from '../controllers/productController';
 import {controllerWrapper} from '../../utils/controllerWrapper';
+import {ProductController} from '../controllers/ProductController';
+import {ProductService} from '../services/ProductService';
+import {SeqProductRepository} from '../repositories/SeqProductRepository';
 
-const productRoutes: IRouter = Router();
+export class ProductRoutes {
+  public readonly router: IRouter;
 
-productRoutes.post('/products', controllerWrapper(createProduct));
-productRoutes.get('/products', controllerWrapper(listProducts));
-productRoutes.get('/products/:id', controllerWrapper(getProductById));
-productRoutes.get('/product-types', controllerWrapper(getProductTypes));
-productRoutes.get('/colours', controllerWrapper(getProductColours));
+  constructor() {
+    const productController = new ProductController(
+      new ProductService(new SeqProductRepository()),
+    );
+    this.router = Router();
 
-export {productRoutes};
+    this.router.post(
+      '/products',
+      controllerWrapper(
+        productController.createProduct.bind(productController),
+      ),
+    );
+    this.router.get(
+      '/products',
+      controllerWrapper(productController.listProducts.bind(productController)),
+    );
+    this.router.get(
+      '/products/:id',
+      controllerWrapper(
+        productController.getProductById.bind(productController),
+      ),
+    );
+    this.router.get(
+      '/product-types',
+      controllerWrapper(
+        productController.getProductTypes.bind(productController),
+      ),
+    );
+    this.router.get(
+      '/colours',
+      controllerWrapper(
+        productController.getProductColours.bind(productController),
+      ),
+    );
+  }
+}

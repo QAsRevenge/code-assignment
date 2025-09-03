@@ -1,57 +1,26 @@
-import {
-  Product,
-  Colour,
-  ProductType,
-} from '../../../repo/appdb/_sequelize/models';
+import {SeqProductRepository} from '../repositories/SeqProductRepository';
 import {Product as ProductInput} from '../types/validation/Product';
 
-export const productService = {
-  async createProduct(input: ProductInput) {
-    const product: Product = await Product.create({
-      name: input.name,
-      productTypeId: input.productTypeId,
-    });
-    await product.$set('colours', input.colourIds);
-    return product;
-  },
+export class ProductService {
+  constructor(private readonly productRepository: SeqProductRepository) {}
 
-  async listProducts(productTypeId?: number) {
-    const where = productTypeId ? {productTypeId: productTypeId} : {};
-    return Product.findAll({
-      where,
-      attributes: ['id', 'name'],
-      include: [
-        {model: ProductType, attributes: ['productType']},
-        {model: Colour, attributes: ['name'], through: {attributes: []}},
-      ],
-      order: [['createdAt', 'DESC']],
-    });
-  },
+  public async createProduct(input: ProductInput) {
+    return this.productRepository.createProduct(input);
+  }
+
+  public async listProducts(productTypeId?: number) {
+    return this.productRepository.listProducts(productTypeId);
+  }
 
   async getProductById(id: number) {
-    return Product.findByPk(id, {
-      include: [
-        {
-          model: ProductType,
-          attributes: {
-            exclude: ['createdAt', 'updatedAt'],
-          },
-        },
-        {
-          model: Colour,
-          attributes: {exclude: ['createdAt', 'updatedAt']},
-          through: {attributes: []},
-        },
-      ],
-      attributes: {exclude: ['createdAt', 'updatedAt']},
-    });
-  },
+    return this.productRepository.getProductById(id);
+  }
 
   async getProductTypes() {
-    return ProductType.findAll({attributes: ['id', 'productType']});
-  },
+    return this.productRepository.getProductTypes();
+  }
 
   async getProductColours() {
-    return Colour.findAll({attributes: ['id', 'name']});
-  },
-};
+    return this.productRepository.getProductColours();
+  }
+}

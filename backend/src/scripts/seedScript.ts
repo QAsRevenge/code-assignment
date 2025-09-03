@@ -1,11 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 import {ProductType} from '../repo/appdb/_sequelize/models/ProductType';
-import {Colour} from '../repo/appdb/_sequelize/models/Colour';
+import {Colour} from '../_sequelize/models/Colour';
 import {initSequelize} from '../repo/appdb/_sequelize/initSequelize';
+import {Sequelize} from 'sequelize-typescript';
 
-async function seed() {
-  const sequelize = initSequelize();
+export async function seedData(sequelize: Sequelize) {
   await sequelize.authenticate();
 
   // Seed Product Types
@@ -33,8 +33,17 @@ async function seed() {
     await Colour.findOrCreate({where: {name: colour}});
   }
 
-  await sequelize.close();
   console.log('Seeding complete!');
 }
 
-seed().catch(console.error);
+async function seedPostgres() {
+  const sequelize = initSequelize();
+  await sequelize.authenticate();
+  await seedData(sequelize);
+  await sequelize.close();
+  console.log('Seeding postgres complete!');
+}
+
+if (require.main === module) {
+  seedPostgres().catch(console.error);
+}

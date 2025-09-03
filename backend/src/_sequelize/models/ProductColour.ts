@@ -19,12 +19,10 @@ class ProductColour extends Model {
   declare id: number;
 
   @ForeignKey(() => Product)
-  @Column
-  productId!: number;
+  declare productId: number;
 
   @ForeignKey(() => Colour)
-  @Column
-  colourId!: number;
+  declare colourId: number;
 }
 
 export {ProductColour};
