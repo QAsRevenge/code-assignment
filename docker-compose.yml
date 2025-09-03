@@ -55,7 +55,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    command: pnpm run dev -- --host
+    command: pnpm run dev
     ports:
       - '3002:3000'
     depends_on:
