@@ -11,11 +11,12 @@ To get started:
 
 1. Clone the repository
 2. Run `pnpm install`
-3. In the root, run `docker-compose up --build`, this will start both the backend and frontend.
-4. If the postgres database is not initialized, you need to run the migration scripts
+3. Copy the envTemplates to .env files in both the backend and `packages/app-db` directories
+4. In the root, run `docker-compose up --build`, this will start both the backend and frontend.
+5. If the postgres database is not initialized, you need to run the migration scripts
    - Navigate to the backend directory
    - Run `pnpm db:up` to create the tables and schemas in the database.
-5. To seed the Postgres database, run `pnpm db:seed` in the backend directory.
+6. To seed the Postgres database, run `pnpm db:seed` in the backend directory.
 
 The frontend will be available at `http://localhost:3002` and the backend at `http://localhost:3001`.
 
