@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Product Model > can create a product 1`] = `
+{
+  "createdAt": 2025-01-01T00:00:00.000Z,
+  "id": 1,
+  "name": "Test Product",
+  "productTypeId": 1,
+  "updatedAt": 2025-01-01T00:00:00.000Z,
+}
+`;

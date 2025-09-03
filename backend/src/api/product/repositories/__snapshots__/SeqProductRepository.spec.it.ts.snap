@@ -1,0 +1,113 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SeqProductRepository > should create a product 1`] = `
+[
+  {
+    "colours": [
+      {
+        "ProductColour": {
+          "colourId": 1,
+          "createdAt": 2025-01-01T00:00:00.000Z,
+          "id": 1,
+          "productId": 1,
+          "updatedAt": 2025-01-01T00:00:00.000Z,
+        },
+        "createdAt": 2025-01-01T00:00:00.000Z,
+        "id": 1,
+        "name": "Red",
+        "updatedAt": 2025-01-01T00:00:00.000Z,
+      },
+      {
+        "ProductColour": {
+          "colourId": 2,
+          "createdAt": 2025-01-01T00:00:00.000Z,
+          "id": 2,
+          "productId": 1,
+          "updatedAt": 2025-01-01T00:00:00.000Z,
+        },
+        "createdAt": 2025-01-01T00:00:00.000Z,
+        "id": 2,
+        "name": "Blue",
+        "updatedAt": 2025-01-01T00:00:00.000Z,
+      },
+    ],
+    "createdAt": 2025-01-01T00:00:00.000Z,
+    "id": 1,
+    "name": "Test Shirt",
+    "productType": {
+      "createdAt": 2025-01-01T00:00:00.000Z,
+      "id": 1,
+      "productType": "Shirt",
+      "updatedAt": 2025-01-01T00:00:00.000Z,
+    },
+    "productTypeId": 1,
+    "updatedAt": 2025-01-01T00:00:00.000Z,
+  },
+]
+`;
+
+exports[`SeqProductRepository > should get all product colours 1`] = `
+[
+  {
+    "id": 1,
+    "name": "Red",
+  },
+  {
+    "id": 2,
+    "name": "Blue",
+  },
+]
+`;
+
+exports[`SeqProductRepository > should get all product types 1`] = `
+[
+  {
+    "id": 1,
+    "productType": "Shirt",
+  },
+  {
+    "id": 2,
+    "productType": "Pants",
+  },
+]
+`;
+
+exports[`SeqProductRepository > should get product by id 1`] = `
+{
+  "colours": [
+    "Red",
+    "Blue",
+  ],
+  "id": 1,
+  "name": "Test Shirt 1",
+  "productType": "Shirt",
+}
+`;
+
+exports[`SeqProductRepository > should list products with no productTypeId specified 1`] = `
+[
+  {
+    "colours": "Blue",
+    "id": 2,
+    "name": "Test Pants 1",
+    "productType": "Pants",
+  },
+  {
+    "colours": "Red",
+    "id": 1,
+    "name": "Test Shirt 1",
+    "productType": "Shirt",
+  },
+]
+`;
+
+exports[`SeqProductRepository > should list products with productTypeId specified 1`] = `
+[
+  {
+    "colours": "Red",
+    "id": 1,
+    "name": "Test Shirt 1",
+    "productType": "Shirt",
+  },
+]
+`;
