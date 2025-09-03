@@ -51,5 +51,15 @@ services:
       - .:/app
       - ./node_modules:/app/node_modules
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: pnpm run dev -- --host
+    ports:
+      - '3002:3000'
+    depends_on:
+      - backend
+
 volumes:
   db-data:
