@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
-import {ProductType} from '../repo/appdb/_sequelize/models/ProductType';
+import {ProductType} from '../_sequelize/models/ProductType';
 import {Colour} from '../_sequelize/models/Colour';
-import {initSequelize} from '../repo/appdb/_sequelize/initSequelize';
+import {initSequelize} from '../_sequelize/initSequelize';
 import {Sequelize} from 'sequelize-typescript';
 
 export async function seedData(sequelize: Sequelize) {
@@ -32,8 +32,6 @@ export async function seedData(sequelize: Sequelize) {
   for (const colour of colours) {
     await Colour.findOrCreate({where: {name: colour}});
   }
-
-  console.log('Seeding complete!');
 }
 
 async function seedPostgres() {
