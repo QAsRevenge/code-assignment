@@ -1,4 +1,4 @@
-import {Colour, ProductType} from '../../../repo/appdb/_sequelize/models';
+import {Colour, ProductType} from '../../../_sequelize/models';
 import {ProductDetail} from '../types/responses/ProductDetail';
 import {ProductList} from '../types/responses/ProductList';
 
