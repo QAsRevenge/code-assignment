@@ -8,7 +8,6 @@ import {
   expect,
   beforeEach,
   afterAll,
-  afterEach,
 } from 'vitest';
 import {
   Product,
@@ -46,7 +45,6 @@ describe('SeqProductRepository', () => {
     const productType = await ProductType.create({productType: 'Shirt', id: 1});
 
     await productRepo.createProduct({
-      id: 1,
       name: 'Test Shirt',
       productTypeId: productType.id,
       colourIds: [colour1.id, colour2.id],
