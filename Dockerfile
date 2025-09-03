@@ -2,14 +2,9 @@ FROM node:20
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY tsconfig.base.json ./
-COPY backend/package.json ./backend/
-COPY backend/tsconfig.json ./backend/
+COPY . .
 
 RUN npm install -g pnpm && pnpm install
-
-COPY backend ./backend
 
 WORKDIR /app/backend
 
