@@ -12,15 +12,15 @@ export class ProductService {
     return this.productRepository.listProducts(productTypeId);
   }
 
-  async getProductById(id: number) {
+  public async getProductById(id: number) {
     return this.productRepository.getProductById(id);
   }
 
-  async getProductTypes() {
+  public async getProductTypes() {
     return this.productRepository.getProductTypes();
   }
 
-  async getProductColours() {
+  public async getProductColours() {
     return this.productRepository.getProductColours();
   }
 }
