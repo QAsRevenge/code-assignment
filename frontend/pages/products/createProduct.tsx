@@ -1,12 +1,14 @@
 import {useEffect, useState} from 'react';
 import {useProductOptions} from '@/hooks/useProductOptions';
 import {useCreateProduct} from '@/hooks/useCreateProduct';
+import {useRouter} from 'next/router';
 import styles from './createProduct.module.css';
 
 export default function CreateProduct() {
   const [name, setName] = useState('');
   const [productTypeId, setProductTypeId] = useState<number>();
   const [colourIds, setColourIds] = useState<number[]>([]);
+  const router = useRouter();
   const {
     productTypes,
     colours,
@@ -101,6 +103,13 @@ export default function CreateProduct() {
           {createLoading ? 'Creating...' : 'Create Product'}
         </button>
       </form>
+      <button
+        type="button"
+        style={{marginTop: 16}}
+        onClick={() => router.push('/')}
+      >
+        Go to product list
+      </button>
     </div>
   );
 }

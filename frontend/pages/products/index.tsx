@@ -1,8 +1,10 @@
 import {useFetchProducts} from '@/hooks/useFetchProducts';
+import {useRouter} from 'next/router';
 import styles from './index.module.css';
 
 export default function ProductsListPage() {
   const {products, error} = useFetchProducts();
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -28,6 +30,13 @@ export default function ProductsListPage() {
           ))}
         </tbody>
       </table>
+      <button
+        type="button"
+        style={{marginTop: 16}}
+        onClick={() => router.push('/products/createProduct')}
+      >
+        Create new product
+      </button>
     </div>
   );
 }
